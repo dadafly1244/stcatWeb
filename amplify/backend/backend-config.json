@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "stcatweb3b6787bb": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
