@@ -4,7 +4,7 @@ import Amplify from 'aws-amplify';
 import { AmplifyAuthenticator, AmplifySignUp, AmplifySignIn,  AmplifySignOut, AmplifyConfirmSignIn, AmplifyConfirmSignUp, AmplifyForgotPassword } from '@aws-amplify/ui-react';
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 import awsconfig from './aws-exports';
-import GreetingsApp from './GreetingsApp'
+//import GreetingsApp from './GreetingsApp'
 
 Amplify.configure(awsconfig);
 
