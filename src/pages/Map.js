@@ -6,8 +6,8 @@ import axios from 'axios'
 
 const Map = () => {
   
-  const [latData, setlatData] = useState();
-  const [lonData, setlonData] = useState();
+  const [latData, setlatData] = useState(0);
+  const [lonData, setlonData] = useState(0);
 
   useEffect( ( )=>{
 
@@ -59,7 +59,7 @@ const Map = () => {
       const last = arr[arr.length -1]
       setlatData(arr.lat);
       setlonData(arr.lon);
-      console.log(latData, lonData);
+      
 
     }
     var container = document.getElementById('map');
@@ -74,6 +74,7 @@ const Map = () => {
       position: markerPosition
     });
     marker.setMap(map);
+    console.log(latData, lonData);
     fetchEvents()
     
   }, [])
