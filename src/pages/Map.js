@@ -10,7 +10,7 @@ const Map = () => {
 
     useEffect(()=>{
 
-        const fetchEvents = async()=>{
+        /* const fetchEvents = async()=>{
           const res = await axios.get("https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/10" )//이 줄이 완료된후 다음줄 실행
 
           //console.log(res)
@@ -50,7 +50,7 @@ const Map = () => {
           setLocationData({
             data: [last.lat, last.lon]
           });
-        }
+        } */
 
         
         
@@ -58,17 +58,17 @@ const Map = () => {
 
         var container = document.getElementById('map');
         var options = {
-          center: new kakao.maps.LatLng(locationData),
+          center: new kakao.maps.LatLng(35.128),
           level: 3
         };
     
         var map = new kakao.maps.Map(container, options);
-        var markerPosition  = new kakao.maps.LatLng(locationData); 
+        var markerPosition  = new kakao.maps.LatLng(35,128); 
         var marker = new kakao.maps.Marker({
           position: markerPosition
       });
       marker.setMap(map);
-      fetchEvents()
+      //fetchEvents()
     
     }, [])
     
