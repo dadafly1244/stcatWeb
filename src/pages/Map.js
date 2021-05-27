@@ -47,8 +47,9 @@ const Map = () => {
           findItem.minutes = minutes;
           findItem.id = id;
           findItem.device_data = device_data;
-          findItem.lon = lon;
           findItem.lat = lat;
+          findItem.lon = lon;
+          
         }
         
         return acc;
@@ -56,8 +57,9 @@ const Map = () => {
       }, [])
 
       const last = arr[arr.length -1]
-      setlatData(last.lat)
-      setlonData(last.lon)
+      setlatData(arr.lat);
+      setlonData(arr.lon);
+      console.log(latData, lonData);
 
     }
     var container = document.getElementById('map');
