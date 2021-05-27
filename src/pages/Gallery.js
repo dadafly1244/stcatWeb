@@ -20,7 +20,7 @@ const Gallery = () => {
         }
         const makeData = (items) => {
             const arr = items.reduce((acc,cur)=>{ //그 달의 가장 나중 날짜에 해당하는 것만 가져올거임, 필터링
-                const currentDate = new Date(cur.Date);
+                const currentDate = new Date(cur.time);
                 const year = currentDate.getFullYear();
                 const month = currentDate.getMonth();
                 const date = currentDate.getDate(); 
@@ -28,11 +28,12 @@ const Gallery = () => {
                 const minutes = currentDate.getMinutes();
                 const id = cur.id;
                 const device_data = cur.device_data;
+                const weight_b = device_data.weight_b;
 
 
                 const findItem = acc.find(a=> a.year === year && a.month === month);
                 if(!findItem) {
-                    acc.push({year, month, date, hours, minutes, id, device_data})
+                    acc.push({year, month, date, hours, minutes, id, device_data,weight_b})
                 } 
                 if(findItem && findItem.date <date){ 
                     
@@ -43,6 +44,7 @@ const Gallery = () => {
                     findItem.minutes = minutes;
                     findItem.id = id;
                     findItem.device_data = device_data;
+                    findItem.weight_b = weight_b
                 }
             
                return acc;
