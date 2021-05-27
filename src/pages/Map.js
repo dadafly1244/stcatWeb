@@ -51,8 +51,8 @@ const Map = () => {
           findItem.lon = lon;
           
         }
-        setlatData(arr.lat);
-        setlonData(arr.lon);
+        setlatData(lat);
+        setlonData(lon);
         return acc;
 
       }, [])
