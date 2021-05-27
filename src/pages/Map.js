@@ -59,7 +59,7 @@ const Map = () => {
 
       const last = arr[arr.length -1]
       setlatData(last.lat);
-        setlonData(lat.lon);
+      setlonData(last.lon);
       
 
     }
