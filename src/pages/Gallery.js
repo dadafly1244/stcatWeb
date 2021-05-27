@@ -35,7 +35,7 @@ const Gallery = () => {
                 if(!findItem) {
                     acc.push({year, month, date, hours, minutes, id, device_data,weight_b})
                 } 
-                if(findItem && findItem.date <date){ 
+                if(findItem && findItem.minutes <minutes){ 
                     
                     findItem.date = date;
                     findItem.year = year;
