@@ -18,6 +18,7 @@ const Map = () => {
 
       console.log(res)
       makeData(res.data.Items)
+
     }
       
     const makeData = (items) => {
@@ -51,14 +52,14 @@ const Map = () => {
           findItem.lon = lon;
           
         }
-        setlatData(lat);
-        setlonData(lon);
+        
         return acc;
 
       }, [])
 
       const last = arr[arr.length -1]
-      
+      setlatData(last.lat);
+        setlonData(lat.lon);
       
 
     }
