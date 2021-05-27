@@ -5,10 +5,10 @@ import axios from 'axios'
 
 const Gallery = () => {
 
-    const [deviceData, serDeviceData] =useState();
-    const [confirmedData, setConfirmedData] = useState()
+    const [deviceData, setDeviceData] =useState();
+    /* const [confirmedData, setConfirmedData] = useState()
     const [quarantinedData, setQuarantinedData] = useState()
-    const [comparedData, setComparedData] = useState()
+    const [comparedData, setComparedData] = useState() */
     
     useEffect(()=>{
 
@@ -53,6 +53,20 @@ const Gallery = () => {
            }, [])
 
            const labels = arr.map(a=> `${a.month+1}월`);//재정의할때 씀
+
+           const last = arr[arr.length -1]
+            setDeviceData({
+                labels: ["확진자","격리해제","사망"],
+                datasets: [
+                    { 
+                        label: "기기ID,기기 데이터",
+                        backgroundColor: ["#ff3d67", "#059bff"],
+                        borderColor: ["#ff3d67", "#059bff"],
+                        fill: false,
+                        data: [last.id, last.device_data]
+                    },
+                ]
+            }); 
            /* setConfirmedData({
                 labels,
                 datasets: [
