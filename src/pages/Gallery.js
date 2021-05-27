@@ -16,7 +16,7 @@ const Gallery = () => {
             const res = await axios.get("https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/10" )//이 줄이 완료된후 다음줄 실행
 
             console.log(res)
-            makeData(res.items)
+            makeData(res.data.Items)
         }
         const makeData = (items) => {
             const arr = items.reduce((acc,cur)=>{ //그 달의 가장 나중 날짜에 해당하는 것만 가져올거임, 필터링
