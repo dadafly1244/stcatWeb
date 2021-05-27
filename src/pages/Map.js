@@ -51,14 +51,14 @@ const Map = () => {
           findItem.lon = lon;
           
         }
-        
+        setlatData(arr.lat);
+        setlonData(arr.lon);
         return acc;
 
       }, [])
 
       const last = arr[arr.length -1]
-      setlatData(arr.lat);
-      setlonData(arr.lon);
+      
       
 
     }
