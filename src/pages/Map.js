@@ -6,8 +6,8 @@ import axios from 'axios'
 
 const Map = () => {
   
-  const [latData, setlatData] = useState(0);
-  const [lonData, setlonData] = useState(0);
+  const [latData, setlatData] = useState();
+  const [lonData, setlonData] = useState();
 
   useEffect( ( )=>{
 
@@ -37,7 +37,7 @@ const Map = () => {
 
         const findItem = acc.find(a=> a.year === year && a.month === month);
         if(!findItem) {
-          acc.push({year, month, date, hours, minutes, id, device_data,lat,lon})
+          acc.push({year, month, date, hours, minutes, id, device_data, lat, lon})
         } 
         if(findItem && findItem.minutes <minutes){ 
                 
@@ -58,9 +58,9 @@ const Map = () => {
       }, [])
 
       const last = arr[arr.length -1]
-      setlatData(last.lat);
-      setlonData(last.lon);
-      
+      setlatData(latData = last.lat);
+      setlonData(lonData = last.lon);
+      console.log(latData, lonData);
 
     }
     var container = document.getElementById('map');
@@ -75,7 +75,7 @@ const Map = () => {
       position: markerPosition
     });
     marker.setMap(map);
-    console.log(latData, lonData);
+    
     fetchEvents()
     
   }, [])
