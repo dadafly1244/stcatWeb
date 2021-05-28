@@ -57,7 +57,7 @@ const Home = () => {
            console.log(last);
 
            //const rest = last.map(a=> `${100-a.weight_b}`);//재정의
-           const rest = 100-a.weight_b;
+            const rest = 100-last.weight_b;
             setWeigihtData1({
                 labels: ["사료통 잔량","-"],
                 datasets: [
