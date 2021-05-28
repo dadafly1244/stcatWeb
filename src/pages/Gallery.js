@@ -1,7 +1,8 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useRef ,useState, useEffect} from 'react';
 import { Bar, Doughnut, Line } from "react-chartjs-2"
 import axios from 'axios'
+
+import Chartjs from 'chart.js';
 //display:true, beginAtZero : true, steps: 10, stepValue: 5, max:100
 /* const optionss = {
                
@@ -13,7 +14,7 @@ import axios from 'axios'
 
 }; */
 
-const Gallery = () => {
+/* const Gallery = () => {
 
     const [deviceData, setDeviceData] =useState();
     const [weightData, setWeigihtData] =useState();
@@ -32,15 +33,7 @@ const Gallery = () => {
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels:[`${last.hours}시 ${last.minutes}분`],
-                    datasets:[
-                        {
-                            label: "전체 사료 잔량",
-                            backgroundColor: "salmon",
-                            fill: true,
-                            data: [last.weight_b]
-                        }
-                    ]
+                    weightData
                 },
                 options: {
                     scales: {
@@ -154,3 +147,4 @@ const Gallery = () => {
 }
 
 export default Gallery;
+ */
