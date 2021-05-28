@@ -1,11 +1,9 @@
-
 import React, { useRef ,useState, useEffect} from 'react';
 import { Bar, Doughnut, Line } from "react-chartjs-2"
 import axios from 'axios'
 
 const Home = () => {
 
-    const [deviceData, setDeviceData] =useState();
     const [weightData1, setWeigihtData1] =useState();
     
     
@@ -17,8 +15,6 @@ const Home = () => {
             console.log(res)
             makeData(res.data.Items)
 
-           
-           
 
         }
         const makeData = (items) => {
@@ -33,13 +29,10 @@ const Home = () => {
                 const device_data = cur.device_data;
                 const weight_b = device_data.weight_b;//실시간 사료통 무게
                 const w_count = device_data.w_count;//0 아니면 서보모터 돌아감 
-                const pir_count = device_data.pir_count; //0아니면 반응한 것
-
-
 
                 const findItem = acc.find(a=> a.year === year && a.month === month);
                 if(!findItem) {
-                    acc.push({year, month, date, hours, minutes, id, device_data,weight_b,w_count,pir_count})
+                    acc.push({year, month, date, hours, minutes, id, device_data,weight_b,w_count})
                 } 
                 if(findItem && findItem.minutes <minutes){ 
                     
@@ -52,7 +45,6 @@ const Home = () => {
                     findItem.device_data = device_data;
                     findItem.weight_b = weight_b;
                     findItem.w_count = w_count;
-                    findItem.pir_count = pir_count;
                 }
             
                return acc;
@@ -64,8 +56,8 @@ const Home = () => {
            const last = arr[arr.length -1]
            console.log(last);
 
-
-           const rest = last.map(a=> `${100-a.weight_b}`);//재정의
+           //const rest = last.map(a=> `${100-a.weight_b}`);//재정의
+           const rest = 100-a.weight_b;
             setWeigihtData1({
                 labels: ["사료통 잔량","-"],
                 datasets: [
@@ -73,14 +65,12 @@ const Home = () => {
                         label: "사료통 잔량, -",
                         backgroundColor: ["#ff3d67", "##C0C0C0"],
                         borderColor: ["#ff3d67", "##C0C0C0"],
-                        fill: false,
+                        fill: true,
                         data: [last.weight_b, rest]
                     },
                 ]
             });
            
-           
-            
             // items.forEach(item => console.log(item))
             console.log(arr)
         }
@@ -93,16 +83,18 @@ const Home = () => {
     return(
         <div>
             <h2>Home Page</h2>
-            <div>
+            <section>
+                <div>
+                    <h3>현재 남은 사료량</h3>
                     <Doughnut data={weightData1} option={
-                        {title:{ display: true, text: `누적 확진, 해제 (${new Date().getMonth()+1}월)`, fontSize:16}},
+                        {title:{ display: true, text: `현재 남은 사료량, - (${new Date().getMonth()+1}월)`, fontSize:16}},
                         {legend:{ display:true, position: "bottom" }}
                     } />
                 </div>
+            </section>
 
         </div>
     )
 }
 
 export default Home;
-

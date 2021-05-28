@@ -58,12 +58,13 @@ const Gallery = () => {
                     }
                 }
             }); */
-            if (chartContainer && chartContainer.current) {
-                const newChartInstance = new Chartjs(chartContainer.current, chartConfig);
-                setChartInstance(newChartInstance);
-            }
+           
 
 
+        }
+        if (chartContainer && chartContainer.current) {
+            const newChartInstance = new Chartjs(chartContainer.current, chartConfig);
+            setChartInstance(newChartInstance);
         }
         const makeData = (items) => {
             const arr = items.reduce((acc,cur)=>{ //그 달의 가장 나중 날짜에 해당하는 것만 가져올거임, 필터링
