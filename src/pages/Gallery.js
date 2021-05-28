@@ -58,6 +58,7 @@ const Gallery = () => {
            const labels = arr.map(a=> `${a.month+1}월`);//재정의할때 씀
            
            const last = arr[arr.length -1]
+           console.log(last);
 
            setWeigihtData({
                 labels:[`${last.hours}시 ${last.minutes}분`],
@@ -122,7 +123,16 @@ const Gallery = () => {
                 <div>
                     <Bar data={weightData} option={
                         {title:{ display: true, text: "전체 사료 잔량", fontSize:20}},
-                        {legend:{ display:true, position: "bottom" }}
+                        {legend:{ display:true, position: "bottom" }},
+                        {scale: {yAxes: [{
+                            display:true,
+                            ticks:{
+                                beginAtZero: true,
+                                steps: 10,
+                                stepValue: 5,
+                                max:100
+                            }
+                        }]}}
                     } />
                 </div>
             </div>
