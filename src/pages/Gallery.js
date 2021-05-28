@@ -7,7 +7,7 @@ const Gallery = () => {
 
     const [deviceData, setDeviceData] =useState();
     const [weightData, setWeigihtData] =useState();
-
+    let optionss;
     
     useEffect(()=>{
 
@@ -71,42 +71,14 @@ const Gallery = () => {
                     }
                 ]
            });
+           optionss = {
+               plugins:{
+                   title:{display:true,text: "전체 사료 잔량", fontSize:20 },
+                   legend :{display:true, position:"bottom"},
+                   scales :{ y: {display:true,beginAtZero : true,steps: 10,stepValue: 5,max:100}},  
+               },
+           };
             
-           /* setConfirmedData({
-                labels,
-                datasets: [
-                    { 
-                        label: "국내 누적 확진자",
-                        backgroundColor: "salmon",
-                        fill: true,
-                        data: arr.map(a => a.confirmed)
-                    },
-                ]
-            });
-            setQuarantinedData({
-                labels,
-                datasets: [
-                    { 
-                        label: "월별 격리자 현황",
-                        borderColor: "salmon",
-                        fill: false,
-                        data: arr.map(a => a.active)
-                    },
-                ]
-            });
-            const last = arr[arr.length -1]
-            setComparedData({
-                labels: ["확진자","격리해제","사망"],
-                datasets: [
-                    { 
-                        label: "누적 확진, 해제, 사망 비율",
-                        backgroundColor: ["#ff3d67", "#059bff", "#ffc233"],
-                        borderColor: ["#ff3d67", "#059bff", "#ffc233"],
-                        fill: false,
-                        data: [last.confirmed, last.recovered, last.death]
-                    },
-                ]
-            }); */
             // items.forEach(item => console.log(item))
             console.log(arr)
         }
@@ -121,19 +93,8 @@ const Gallery = () => {
 
             <div className="contents">
                 <div>
-                    <Bar data={weightData} options={
-                        {title:{ display: true, text: "전체 사료 잔량", fontSize:20}},
-                        {legend:{ display:true, position: "bottom" }},
-                        {scale: {yAxes: [{
-                            display:true,
-                            ticks:{
-                                beginAtZero: true,
-                                steps: 10,
-                                stepValue: 5,
-                                max:100
-                            }
-                        }]}}
-                    } />
+                    
+                    <Bar data={weightData} options={ optionss} />
                 </div>
             </div>
             
