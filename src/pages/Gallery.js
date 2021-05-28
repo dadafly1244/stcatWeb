@@ -2,16 +2,16 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { Bar, Doughnut, Line } from "react-chartjs-2"
 import axios from 'axios'
-
-const optionss = {
+//display:true, beginAtZero : true, steps: 10, stepValue: 5, max:100
+/* const optionss = {
                
     plugins:{
         title:{display:true,text: "전체 사료 잔량", fontSize:20 },
         legend :{display:true, position:"bottom"},
-        scales :{ y: {display:true, beginAtZero : true, steps: 10, stepValue: 5, max:100}}, 
+        scales :{ y: {suggestedMin:0, suggestedMax:100}}, 
     }, 
 
-};
+}; */
 
 const Gallery = () => {
 
@@ -98,7 +98,24 @@ const Gallery = () => {
             <div className="contents">
                 <div>
                     
-                    <Bar data={weightData} options={optionss} />
+                    <Bar data={weightData} options={{
+                            legend: {
+                                display: false
+                            },
+                            scales: {
+                                yAxes: [{
+                                ticks: {
+                                    max: 100,
+                                    min: 0,
+                                    stepSize: 10
+                                    }
+                                }]
+                                },
+                                title: {
+                                display: 1,
+                                text: "사료 잔량"
+                                }
+                            }} />
                 </div>
             </div>
             
