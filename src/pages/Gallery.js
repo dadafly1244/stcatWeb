@@ -121,7 +121,7 @@ const Gallery = () => {
 
             <div className="contents">
                 <div>
-                    <Bar data={weightData} option={
+                    <Bar data={weightData} options={
                         {title:{ display: true, text: "전체 사료 잔량", fontSize:20}},
                         {legend:{ display:true, position: "bottom" }},
                         {scale: {yAxes: [{
