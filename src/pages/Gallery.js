@@ -26,6 +26,33 @@ const Gallery = () => {
 
             console.log(res)
             makeData(res.data.Items)
+
+            var ctx = document.getElementById('myChart');
+
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels:[`${last.hours}시 ${last.minutes}분`],
+                    datasets:[
+                        {
+                            label: "전체 사료 잔량",
+                            backgroundColor: "salmon",
+                            fill: true,
+                            data: [last.weight_b]
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
+
+
         }
         const makeData = (items) => {
             const arr = items.reduce((acc,cur)=>{ //그 달의 가장 나중 날짜에 해당하는 것만 가져올거임, 필터링
@@ -97,7 +124,7 @@ const Gallery = () => {
 
             <div className="contents">
                 <div>
-                    
+                <div id="myChart" style={{width:"500px", height:"400px", margin:"auto"}}></div>
                 <Bar
                     data={weightData}
                     width={400}
