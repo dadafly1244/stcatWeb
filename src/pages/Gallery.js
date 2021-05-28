@@ -98,24 +98,30 @@ const Gallery = () => {
             <div className="contents">
                 <div>
                     
-                    <Bar data={weightData} options={{
-                            legend: {
-                                display: false
-                            },
-                            scales: {
-                                yAxes: [{
+                <Bar
+                    data={weightData}
+                    width={400}
+                    height='150'
+                    options={{
+                        tooltips: {
+                            mode: 'point',
+                            intersect: false,
+                        },
+                        responsive: true,
+                        scales: {
+                            xAxes: [{
+                                stacked: true,
+                            }],
+                            yAxes: [{
                                 ticks: {
-                                    max: 100,
-                                    min: 0,
-                                    stepSize: 10
-                                    }
-                                }]
+                                    beginAtZero: true,
+                                    max: 100
                                 },
-                                title: {
-                                display: 1,
-                                text: "사료 잔량"
-                                }
-                            }} />
+                                stacked: false
+                            }]
+                        }
+                    }}
+                />
                 </div>
             </div>
             
