@@ -7,10 +7,10 @@ import axios from 'axios'
 const Map = () => {
   
 
-  const latData, lonData;
+  let latData, lonData;
   //const [latData, setlatData] = useState();
   //const [lonData, setlonData] = useState();
-  //const [locationData, setLocationData] = useState();
+  const [locationData, setLocationData] = useState();
  
   useEffect( ( )=>{
 
