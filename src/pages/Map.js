@@ -62,8 +62,9 @@ const Map = () => {
      
 
     }
-
+   
     fetchEvents()
+    console.log(latData, lonData);
     var container = document.getElementById('map');
     var options = {
       center: new kakao.maps.LatLng(latData,lonData),
