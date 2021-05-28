@@ -56,11 +56,11 @@ const Gallery = () => {
            }, [])
 
            const labels = arr.map(a=> `${a.month+1}월`);//재정의할때 씀
-
+           
            const last = arr[arr.length -1]
 
            setWeigihtData({
-                labels,
+                labels:[`${last.hours}시 ${last.minutes}분`],
                 datasets:[
                     {
                         label: "전체 사료 잔량",
