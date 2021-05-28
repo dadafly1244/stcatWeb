@@ -6,9 +6,8 @@ import axios from 'axios'
 const Gallery = () => {
 
     const [deviceData, setDeviceData] =useState();
-    /* const [confirmedData, setConfirmedData] = useState()
-    const [quarantinedData, setQuarantinedData] = useState()
-    const [comparedData, setComparedData] = useState() */
+    const [weightData, setWeigihtData] =useState();
+
     
     useEffect(()=>{
 
@@ -28,12 +27,15 @@ const Gallery = () => {
                 const minutes = currentDate.getMinutes();
                 const id = cur.id;
                 const device_data = cur.device_data;
-                const weight_b = device_data.weight_b;
+                const weight_b = device_data.weight_b;//실시간 사료통 무게
+                const w_count = device_data.w_count;//0 아니면 서보모터 돌아감 
+                const pir_count = device_data.pir_count; //0아니면 반응한 것
+
 
 
                 const findItem = acc.find(a=> a.year === year && a.month === month);
                 if(!findItem) {
-                    acc.push({year, month, date, hours, minutes, id, device_data,weight_b})
+                    acc.push({year, month, date, hours, minutes, id, device_data,weight_b,w_count,pir_count})
                 } 
                 if(findItem && findItem.minutes <minutes){ 
                     
@@ -44,7 +46,9 @@ const Gallery = () => {
                     findItem.minutes = minutes;
                     findItem.id = id;
                     findItem.device_data = device_data;
-                    findItem.weight_b = weight_b
+                    findItem.weight_b = weight_b;
+                    findItem.w_count = w_count;
+                    findItem.pir_count = pir_count;
                 }
             
                return acc;
@@ -54,18 +58,19 @@ const Gallery = () => {
            const labels = arr.map(a=> `${a.month+1}월`);//재정의할때 씀
 
            const last = arr[arr.length -1]
-            setDeviceData({
-                labels: ["확진자","격리해제","사망"],
-                datasets: [
-                    { 
-                        label: "기기ID,기기 데이터",
-                        backgroundColor: ["#ff3d67", "#059bff"],
-                        borderColor: ["#ff3d67", "#059bff"],
-                        fill: false,
-                        data: [last.id, last.device_data]
-                    },
+
+           setWeigihtData({
+                labels,
+                datasets:[
+                    {
+                        label: "전체 사료 잔량",
+                        backgroundColor: "salmon",
+                        fill: true,
+                        data: [last.weight_b]
+                    }
                 ]
-            }); 
+           });
+            
            /* setConfirmedData({
                 labels,
                 datasets: [
@@ -112,6 +117,15 @@ const Gallery = () => {
     return (
         <section>
             <h2>디바이스 현황</h2>
+
+            <div className="contents">
+                <div>
+                    <Bar data={weightData} option={
+                        {title:{ display: true, text: "전체 사료 잔량", fontSize:20}},
+                        {legend:{ display:true, position: "bottom" }}
+                    } />
+                </div>
+            </div>
             
         </section>
     )
