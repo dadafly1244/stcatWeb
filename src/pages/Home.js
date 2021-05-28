@@ -17,23 +17,8 @@ const Home = () => {
             console.log(res)
             makeData(res.data.Items)
 
-            var ctx = document.getElementById('myChart');
-
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    weightData
-                },
-                options: {
-                    scales: {
-                        y: {
-                            suggestedMin: 0,
-                            suggestedMax: 100
-                        }
-                    }
-                }
-            });
-
+           
+           
 
         }
         const makeData = (items) => {

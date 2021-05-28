@@ -14,7 +14,7 @@ import Chartjs from 'chart.js';
 
 }; */
 
-/* const Gallery = () => {
+const Gallery = () => {
 
     const [deviceData, setDeviceData] =useState();
     const [weightData, setWeigihtData] =useState();
@@ -30,7 +30,7 @@ import Chartjs from 'chart.js';
 
             var ctx = document.getElementById('myChart');
 
-            var myChart = new Chart(ctx, {
+            /* var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     weightData
@@ -43,7 +43,7 @@ import Chartjs from 'chart.js';
                         }
                     }
                 }
-            });
+            }); */
 
 
         }
@@ -147,4 +147,3 @@ import Chartjs from 'chart.js';
 }
 
 export default Gallery;
- */
