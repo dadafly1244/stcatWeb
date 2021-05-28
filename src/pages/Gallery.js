@@ -101,7 +101,7 @@ const Gallery = () => {
                 <Bar
                     data={weightData}
                     width={400}
-                    height='150'
+                    height={150}
                     options={{
                         tooltips: {
                             mode: 'point',
@@ -113,10 +113,7 @@ const Gallery = () => {
                                 stacked: true,
                             }],
                             yAxes: [{
-                                ticks: {
-                                    beginAtZero: true,
-                                    max: 100
-                                },
+                                max: 100,
                                 stacked: false
                             }]
                         }
