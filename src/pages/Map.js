@@ -6,15 +6,9 @@ import axios from 'axios'
 
 const Map = () => {
   
-
-  let latData, lonData;
-  //const [latData, setlatData] = useState();
-  //const [lonData, setlonData] = useState();
-  const [locationData, setLocationData] = useState();
- 
   useEffect( ( )=>{
 
-        
+    let latData, lonData;  
 
     const fetchEvents = async()=>{
       const res = await axios.get("https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/10" )//이 줄이 완료된후 다음줄 실행
@@ -65,10 +59,7 @@ const Map = () => {
       lonData = last.lon;
       console.log(last.lat, last.lon);
       console.log(latData, lonData);
-      setLocationData({
-        data : [last.lat, last.lon]
-      })
-      console.log(locationData);
+     
 
     }
     var container = document.getElementById('map');
