@@ -1,8 +1,10 @@
 import React, { useRef ,useState, useEffect} from 'react';
-import { Bar, Doughnut, Line } from "react-chartjs-2"
+import Chartjs, { Bar, Doughnut, Line } from "react-chartjs-2"
 import axios from 'axios'
 
-import Chartjs from 'chart.js';
+
+
+
 //display:true, beginAtZero : true, steps: 10, stepValue: 5, max:100
 /* const optionss = {
                
@@ -18,7 +20,19 @@ const Gallery = () => {
 
     const [deviceData, setDeviceData] =useState();
     const [weightData, setWeigihtData] =useState();
-    
+    const chartContainer = useRef(null);
+    const [chartInstance, setChartInstance] = useState(null);
+    const chartConfig = {
+        type: 'bar',
+        data: {
+          weightData
+        },
+        options: {
+            title:{display:true,text: "전체 사료 잔량", fontSize:20 },
+            legend :{display:true, position:"bottom"},
+            scales :{ y: {suggestedMin:0, suggestedMax:100}}, 
+        }
+      };
     
     useEffect(()=>{
 
@@ -28,7 +42,7 @@ const Gallery = () => {
             console.log(res)
             makeData(res.data.Items)
 
-            var ctx = document.getElementById('myChart');
+            //var ctx = document.getElementById('myChart');
 
             /* var myChart = new Chart(ctx, {
                 type: 'bar',
@@ -44,6 +58,10 @@ const Gallery = () => {
                     }
                 }
             }); */
+            if (chartContainer && chartContainer.current) {
+                const newChartInstance = new Chartjs(chartContainer.current, chartConfig);
+                setChartInstance(newChartInstance);
+            }
 
 
         }
@@ -109,7 +127,7 @@ const Gallery = () => {
 
 
         fetchEvents()
-    }, [])
+    }, [chartContainer])
 
     return (
         <section>
@@ -118,6 +136,10 @@ const Gallery = () => {
             <div className="contents">
                 <div>
                 <div id="myChart" style={{width:"500px", height:"400px", margin:"auto"}}></div>
+                <div>
+                    <h3>실험</h3>
+                    <canvas ref={chartContainer} />
+                </div>
                 <Bar
                     data={weightData}
                     width={400}
