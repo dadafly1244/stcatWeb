@@ -59,8 +59,8 @@ const Map = () => {
       }, [])
 
       const last = arr[arr.length -1]
-      setlatData(latData = last.lat);
-      setlonData(lonData = last.lon);
+      setlatData(last.lat);
+      setlonData(last.lon);
       console.log(latData, lonData);
       setLocationData({
         data : [last.lat, last.lon]
