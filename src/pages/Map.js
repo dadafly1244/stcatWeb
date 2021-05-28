@@ -62,6 +62,8 @@ const Map = () => {
      
 
     }
+
+    fetchEvents()
     var container = document.getElementById('map');
     var options = {
       center: new kakao.maps.LatLng(latData,lonData),
@@ -75,7 +77,7 @@ const Map = () => {
     });
     marker.setMap(map);
     
-    fetchEvents()
+   
     
   }, [])
     
