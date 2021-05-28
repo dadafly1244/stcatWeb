@@ -6,9 +6,11 @@ import axios from 'axios'
 
 const Map = () => {
   
-  const [latData, setlatData] = useState();
-  const [lonData, setlonData] = useState();
-  const [locationData, setLocationData] = useState();
+
+  const latData, lonData;
+  //const [latData, setlatData] = useState();
+  //const [lonData, setlonData] = useState();
+  //const [locationData, setLocationData] = useState();
  
   useEffect( ( )=>{
 
@@ -59,8 +61,9 @@ const Map = () => {
       }, [])
 
       const last = arr[arr.length -1]
-      setlatData(last.lat);
-      setlonData(last.lon);
+      latData = last.lat;
+      lonData = last.lon;
+      console.log(last.lat, last.lon);
       console.log(latData, lonData);
       setLocationData({
         data : [last.lat, last.lon]
