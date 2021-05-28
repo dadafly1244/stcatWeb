@@ -22,17 +22,7 @@ const Gallery = () => {
     const [weightData, setWeigihtData] =useState();
     const chartContainer = useRef(null);
     const [chartInstance, setChartInstance] = useState(null);
-    const chartConfig = {
-        type: 'bar',
-        data: {
-          weightData
-        },
-        options: {
-            title:{display:true,text: "전체 사료 잔량", fontSize:20 },
-            legend :{display:true, position:"bottom"},
-            scales :{ y: {suggestedMin:0, suggestedMax:100}}, 
-        }
-      };
+   
     
     useEffect(()=>{
 
@@ -62,10 +52,7 @@ const Gallery = () => {
 
 
         }
-        if (chartContainer && chartContainer.current) {
-            const newChartInstance = new Chartjs(chartContainer.current, chartConfig);
-            setChartInstance(newChartInstance);
-        }
+        
         const makeData = (items) => {
             const arr = items.reduce((acc,cur)=>{ //그 달의 가장 나중 날짜에 해당하는 것만 가져올거임, 필터링
                 const currentDate = new Date(cur.time);
@@ -136,11 +123,9 @@ const Gallery = () => {
 
             <div className="contents">
                 <div>
-                <div id="myChart" style={{width:"500px", height:"400px", margin:"auto"}}></div>
-                <div>
-                    <h3>실험</h3>
-                    <canvas ref={chartContainer} />
-                </div>
+               
+                
+                <h3>실험3</h3>
                 <Bar
                     data={weightData}
                     width={400}
