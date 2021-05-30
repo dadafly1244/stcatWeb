@@ -5,8 +5,18 @@ import axios from 'axios'
 const Home = () => {
 
     const [weightData1, setWeigihtData1] =useState();
-    
-    
+    const [stage, setStage] = useState(1);
+    const fontgreen = {
+        color : "#B1E26A",
+        textAlign: "center",
+        fontSize : 30,
+    }
+    const fontred = {
+        color : "#F15E55",
+        textAlign: "center",
+        fontSize : 40,
+    }
+
     useEffect(()=>{
 
         const fetchEvents = async()=>{
@@ -14,6 +24,7 @@ const Home = () => {
 
             console.log(res)
             makeData(res.data.Items)
+
 
 
         }
@@ -51,13 +62,16 @@ const Home = () => {
 
            }, [])
 
-           const labels = arr.map(a=> `${a.month+1}월`);//재정의할때 씀
+          
            
            const last = arr[arr.length -1]
            console.log(last);
 
-           //const rest = last.map(a=> `${30-a.weight_b}`);//재정의
+           
             const rest = 30-last.weight_b;
+            if (rest <= 6){setStage(2)};
+            //else{setStage(1)};
+
             setWeigihtData1({
                 labels: ["사료통 잔량","-"],
                 datasets: [
@@ -71,10 +85,10 @@ const Home = () => {
                 ]
             });
            
-            // items.forEach(item => console.log(item))
+            
             console.log(arr)
         }
-
+        
 
         fetchEvents()
     }, [])
@@ -83,9 +97,22 @@ const Home = () => {
     return(
         <div>
             <h2>Home Page</h2>
+            <div>
+
+
+            </div>
             <section>
                 <div>
                     <h3>현재 남은 사료량</h3>
+                    <div>
+                        {stage ===1 &&(
+                            <h4 style={fontgreen}> 사료가 충분합니다 :)</h4>
+                        )}
+                        {stage ===2 &&(
+                            <h4 style={fontred}> 사료가 부족합니다!! 사료를 채워주세요. :( </h4>
+                        )}
+                    </div>
+
                     <Doughnut data={weightData1} option={
                         {title:{ display: true, text: `현재 남은 사료량, - (${new Date().getMonth()+1}월)`, fontSize:16}},
                         {legend:{ display:true, position: "bottom" }}
