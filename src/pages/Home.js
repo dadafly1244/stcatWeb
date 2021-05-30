@@ -57,14 +57,14 @@ const Home = () => {
            console.log(last);
 
            //const rest = last.map(a=> `${30-a.weight_b}`);//재정의
-            const rest = 100-last.weight_b;
+            const rest = 30-last.weight_b;
             setWeigihtData1({
                 labels: ["사료통 잔량","-"],
                 datasets: [
                     { 
                         label: "사료통 잔량, -",
-                        backgroundColor: ["#ff3d67", "##C0C0C0"],
-                        borderColor: ["#ff3d67", "##C0C0C0"],
+                        backgroundColor: ["#ff3d67", "#C0C0C0"],
+                        borderColor: ["#ff3d67", "#C0C0C0"],
                         fill: true,
                         data: [last.weight_b, rest]
                     },
