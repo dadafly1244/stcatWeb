@@ -25,7 +25,7 @@ const Home = () => {
        }
         const fetchEvents = async()=>{
             devicedd();
-            const res = await axios.get(`https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/${deviceId}` )//이 줄이 완료된후 다음줄 실행
+            const res = await axios.get(`https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/{deviceId}` )//이 줄이 완료된후 다음줄 실행
 
             console.log(res)
             makeData(res.data.Items)
