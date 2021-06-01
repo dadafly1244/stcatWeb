@@ -1,5 +1,5 @@
 import React, { useRef ,useState, useEffect} from 'react';
-import Chartjs, { Bar, Doughnut, Line } from "react-chartjs-2"
+import { Bar, Doughnut, Line } from "react-chartjs-2"
 import axios from 'axios'
 
 
@@ -21,7 +21,7 @@ const Gallery = () => {
     const [deviceData, setDeviceData] =useState();
     const [weightData, setWeigihtData] =useState();
     const chartContainer = useRef(null);
-    const [chartInstance, setChartInstance] = useState(null);
+   
    
     
     useEffect(()=>{
@@ -103,11 +103,13 @@ const Gallery = () => {
                         label: "전체 사료 잔량",
                         backgroundColor: "salmon",
                         fill: true,
-                        data: [last.weight_b]
+                        data: arr.map(a=>a.weight_b)
                     }
                 ]
            });
            
+
+          
             
             // items.forEach(item => console.log(item))
             console.log(arr)
@@ -126,6 +128,14 @@ const Gallery = () => {
                
                 
                 <h3>실험3</h3>
+
+                <div>
+                    <Line data={quarantinedData} option={
+                        {title:{ display: true, text: "월별 격리자 현황", fontSize:16}},
+                        {legend:{ display:true, position: "bottom" }}
+                    } />
+                </div>
+                
                 <Bar
                     data={weightData}
                     width={400}
