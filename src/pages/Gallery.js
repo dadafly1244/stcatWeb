@@ -18,8 +18,10 @@ import axios from 'axios'
 
 const Gallery = () => {
 
-    const [deviceData, setDeviceData] =useState();
     const [weightData, setWeigihtData] =useState();
+    const [wcountSumData, setWcountSumData] =useState();
+    const [pirSumData, setPirSumData] =useState();
+    
     const chartContainer = useRef(null);
    
    
@@ -66,12 +68,14 @@ const Gallery = () => {
                 const weight_b = device_data.weight_b;//실시간 사료통 무게
                 const w_count = device_data.w_count;//0 아니면 서보모터 돌아감 
                 const pir_count = device_data.pir_count; //0아니면 반응한 것
+                const pir_sum = device_data.pir_sum;
+                const w_count_sum = device_data.w_count_sum;
 
 
 
                 const findItem = acc.find(a=> a.year === year && a.month === month && a.date === date && a.hours === hours && a.minutes === minutes);
                 if(!findItem) {
-                    acc.push({year, month, date, hours, minutes, id, device_data,weight_b,w_count,pir_count})
+                    acc.push({year, month, date, hours, minutes, id, device_data,weight_b,w_count,pir_count,pir_sum,w_count_sum })
                 } 
                 if(findItem && findItem.minutes <minutes){ 
                     
@@ -85,13 +89,15 @@ const Gallery = () => {
                     findItem.weight_b = weight_b;
                     findItem.w_count = w_count;
                     findItem.pir_count = pir_count;
+                    findItem.pir_sum =pir_sum;
+                    findItem.w_count_sum =w_count_sum;
                 }
             
                return acc;
 
            }, [])
 
-           const labels = arr.map(a=> `${a.date}일 ${a.hours}시 ${a.minutes}`);//재정의할때 씀
+           const labels = arr.map(a=> `${a.date}일 ${a.hours}시 ${a.minutes}분`);//재정의할때 씀
            
            const last = arr[arr.length -1]
            console.log(last);
@@ -107,6 +113,29 @@ const Gallery = () => {
                     }
                 ]
            });
+           setWcountSumData({
+            labels,
+            datasets:[
+                {
+                    label: "누적 사료량",
+                    backgroundColor: "yellow",
+                    fill: true,
+                    data: arr.map(a=>a.w_count_sum)
+                }
+            ]
+            })
+
+           setPirSumData({
+                labels,
+                datasets:[
+                    {
+                        label: "누적 방문 횟수",
+                        backgroundColor: "blue",
+                        fill: true,
+                        data: arr.map(a=>a.pir_sum)
+                    }
+                ]
+           })
            
 
           
@@ -134,25 +163,13 @@ const Gallery = () => {
                 </div>
 
                 <Bar
-                    data={weightData}
-                    width={400}
-                    height={150}
-                    options={{
-                        tooltips: {
-                            mode: 'point',
-                            intersect: false,
-                        },
-                        responsive: true,
-                        scales: {
-                            xAxes: [{
-                                stacked: true,
-                            }],
-                            yAxes: [{
-                                max: 100,
-                                stacked: false
-                            }]
-                        }
-                    }}
+                    data={wcountSumData}
+                   
+                />
+                
+                <Bar
+                    data={pirSumData}
+                   
                 />
                 </div>
             </div>
