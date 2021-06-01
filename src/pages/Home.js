@@ -7,7 +7,7 @@ const Home = () => {
     const [weightData1, setWeigihtData1] =useState();
     const [stage, setStage] = useState(1);
     const [deviceId, setDeviceID] =useState(' ');
-    const [currentTime, setcurrentTime]= useStatus( ' ');
+    //const [currentTime, setcurrentTime]= useStatue( ' ');
     const fontgreen = {
         color : "#B1E26A",
         textAlign: "center",
