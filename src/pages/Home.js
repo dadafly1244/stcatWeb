@@ -1,13 +1,14 @@
 import React, { useRef ,useState, useEffect} from 'react';
 import { Bar, Doughnut, Line } from "react-chartjs-2"
 import axios from 'axios'
+import { a } from '@aws-amplify/ui';
 
 const Home = () => {
 
     const [weightData1, setWeigihtData1] =useState();
     const [stage, setStage] = useState(1);
     const [deviceId, setDeviceID] =useState(' ');
-    //const [currentTime, setcurrentTime]= useStatue( ' ');
+    const [currentTime, setcurrentTime]= useStatue();
     const fontgreen = {
         color : "#B1E26A",
         textAlign: "center",
@@ -75,10 +76,9 @@ const Home = () => {
             const rest = 30-last.weight_b;
             if (last.weight_b <= 6){setStage(2)}
             else{setStage(1)};
-           /*  setcurrentTime ({
-                last.hours,
-                last.minutes
-            }); <h5> 마지막 업데이트 시간은 {currentTime.hours}시 {currentTime.minutes}분 입니다.</h5>, */
+           setcurrentTime (
+               a=> a.hours = last.hours, a.minutes =last.minutes
+           ); 
 
             setWeigihtData1({
                 labels: ["사료통 잔량","-"],
@@ -114,13 +114,15 @@ const Home = () => {
                     <h3>현재 남은 사료량</h3>
                     <div>
                         {stage ===1 &&(
-                            <h4 style={fontgreen}> 사료가 충분합니다 :)</h4>,
+                            <h4 style={fontgreen}> 사료가 충분합니다 :)</h4>
                            
-                            <h5 style={fontgreen} > 마지막 업데이트 시간은 {new Date().getHours()}시 {new Date().getMinutes()}분 입니다.</h5>
+                            
                         )}
                         {stage ===2 &&(
                             <h4 style={fontred}> 사료가 부족합니다!! 사료를 채워주세요. :( </h4>
                         )}
+                        <h5 style={fontgreen}> @@마지막 업데이트 시간은 {currentTime.hours}시 {currentTime.minutes}분 입니다.</h5>,
+                        <h5 style={fontgreen} > 마지막 업데이트 시간은 {new Date().getHours()}시 {new Date().getMinutes()}분 입니다.</h5>
                     </div>
 
                     <Doughnut data={weightData1} option={

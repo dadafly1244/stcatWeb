@@ -91,7 +91,7 @@ const Gallery = () => {
 
            }, [])
 
-           const labels = arr.map(a=> `${a.month+1}월`);//재정의할때 씀
+           const labels = arr.map(a=> `${a.date}일 ${a.hours}시 ${a.minutes}`);//재정의할때 씀
            
            const last = arr[arr.length -1]
            console.log(last);
