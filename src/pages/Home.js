@@ -77,7 +77,7 @@ const Home = () => {
             if (last.weight_b <= 6){setStage(2)}
             else{setStage(1)};
            setcurrentTime (
-               a=> a.hours = last.hours, a.minutes =last.minutes
+               a=> {a.hours = last.hours, a.minutes =last.minutes}
            ); 
 
             setWeigihtData1({
