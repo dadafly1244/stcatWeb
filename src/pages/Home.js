@@ -6,6 +6,7 @@ const Home = () => {
 
     const [weightData1, setWeigihtData1] =useState();
     const [stage, setStage] = useState(1);
+    const [deviceId, setDeviceID] =useState(' ');
     const fontgreen = {
         color : "#B1E26A",
         textAlign: "center",
@@ -18,9 +19,9 @@ const Home = () => {
     }
 
     useEffect(()=>{
-
+       
         const fetchEvents = async()=>{
-            const res = await axios.get("https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/10" )//이 줄이 완료된후 다음줄 실행
+            const res = await axios.get(`https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/10` )//이 줄이 완료된후 다음줄 실행
 
             console.log(res)
             makeData(res.data.Items)
