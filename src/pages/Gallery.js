@@ -130,10 +130,7 @@ const Gallery = () => {
                 <h3>실험3</h3>
 
                 <div>
-                    <Line data={weightData} option={
-                        {title:{ display: true, text: "월별 격리자 현황", fontSize:16}},
-                        {legend:{ display:true, position: "bottom" }}
-                    } />
+                    <Line data={weightData} />
                 </div>
 
                 <Bar
