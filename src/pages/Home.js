@@ -81,9 +81,10 @@ const Home = () => {
             if (last.weight_b <= 6){setStage(2)}
             else{setStage(1)};
            setcurrentTime ({
-               hours: last.hours,
-               minutes: last.minutes
+               hourss: last.hours,
+               minutess: last.minutes
             }); 
+            console.log(currentTime);
 
             setWeigihtData1({
                 labels: ["사료통 잔량","-"],
@@ -126,7 +127,7 @@ const Home = () => {
                         {stage ===2 &&(
                             <h4 style={fontred}> 사료가 부족합니다!! 사료를 채워주세요. :( </h4>
                         )}
-                        <h5 style={fontgreen}> @@마지막 업데이트 시간은 {currentTime.hourss}시 {currentTime.minutess}분 입니다.</h5>,
+                        <h5 style={fontgreen}> @@마지막 업데이트 시간은 {currentTime} 입니다.</h5>,
                         <h5 style={fontgreen} > 마지막 업데이트 시간은 {new Date().getHours()}시 {new Date().getMinutes()}분 입니다.</h5>
                     </div>
 
