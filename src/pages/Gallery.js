@@ -97,7 +97,7 @@ const Gallery = () => {
            console.log(last);
 
            setWeigihtData({
-                labels:[`${last.hours}시 ${last.minutes}분`],
+                labels,
                 datasets:[
                     {
                         label: "전체 사료 잔량",

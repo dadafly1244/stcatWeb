@@ -26,7 +26,7 @@ const Home = () => {
        }
         const fetchEvents = async()=>{
             devicedd();
-            const res = await axios.get(`https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/${deviceId}` )//이 줄이 완료된후 다음줄 실행
+            const res = await axios.get(`https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/{deviceId}` )//이 줄이 완료된후 다음줄 실행
 
             console.log(res)
             makeData(res.data.Items)
@@ -118,7 +118,7 @@ const Home = () => {
                         {stage ===1 &&(
                             <h4 style={fontgreen}> 사료가 충분합니다 :)</h4>,
                            
-                            <h5> 마지막 업데이트 시간은 ${new Date().getHours()}시 {new Date().getMinutes()}분 입니다.</h5>
+                            <h5> 마지막 업데이트 시간은 {new Date().getHours()}시 {new Date().getMinutes()}분 입니다.</h5>
                         )}
                         {stage ===2 &&(
                             <h4 style={fontred}> 사료가 부족합니다!! 사료를 채워주세요. :( </h4>
