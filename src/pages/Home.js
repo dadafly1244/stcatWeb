@@ -69,8 +69,8 @@ const Home = () => {
 
            
             const rest = 30-last.weight_b;
-            if (rest <= 6){setStage(2)};
-            //else{setStage(1)};
+            if (last.weight_b <= 6){setStage(2)}
+            else{setStage(1)};
 
             setWeigihtData1({
                 labels: ["사료통 잔량","-"],
