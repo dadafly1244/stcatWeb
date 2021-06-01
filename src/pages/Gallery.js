@@ -69,7 +69,7 @@ const Gallery = () => {
 
 
 
-                const findItem = acc.find(a=> a.year === year && a.month === month);
+                const findItem = acc.find(a=> a.year === year && a.month === month && a.date === date && a.hours === hours && a.minutes === minutes);
                 if(!findItem) {
                     acc.push({year, month, date, hours, minutes, id, device_data,weight_b,w_count,pir_count})
                 } 
