@@ -102,7 +102,7 @@ const Gallery = () => {
                     {
                         label: "전체 사료 잔량",
                         backgroundColor: "salmon",
-                        fill: true,
+                        fill: false,
                         data: arr.map(a=>a.weight_b)
                     }
                 ]
