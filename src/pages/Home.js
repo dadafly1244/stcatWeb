@@ -8,7 +8,7 @@ const Home = () => {
     const [weightData1, setWeigihtData1] =useState();
     const [stage, setStage] = useState(1);
    // const [deviceId, setDeviceID] =useState(' ');
-    let currentHours; 
+    const [currentHours, setcurrentHours] =useState(0); 
     let currentMinutes; 
     
     const fontgreen = {
@@ -32,7 +32,7 @@ const Home = () => {
             console.log(res)
             makeData(res.data.Items)
 
-
+            
 
         }
         const makeData = (items) => {
@@ -78,10 +78,12 @@ const Home = () => {
             const rest = 30-last.weight_b;
             if (last.weight_b <= 6){setStage(2)}
             else{setStage(1)};
-            currentHours = last.hours;
+
+            setcurrentHours(last.hours);
+            //currentHours = last.hours;
             currentMinutes = last.minutes;
             console.log(currentHours, currentMinutes);
-            
+
             setWeigihtData1({
                 labels: ["사료통 잔량","-"],
                 datasets: [
@@ -123,7 +125,7 @@ const Home = () => {
                         {stage ===2 &&(
                             <h4 style={fontred}> 사료가 부족합니다!! 사료를 채워주세요. :( </h4>
                         )}
-                        <h5 style={fontgreen}> @@마지막 업데이트 시간은 {currentHours}시 {currentMinutes} 입니다.</h5>,
+                        <h5 style={fontgreen}>{console.log(currentHours, currentMinutes)} @@마지막 업데이트 시간은 {currentHours}시 {currentMinutes}분 입니다.</h5>,
                         <h5 style={fontgreen} > 마지막 업데이트 시간은 {new Date().getHours()}시 {new Date().getMinutes()}분 입니다.</h5>
                     </div>
 
