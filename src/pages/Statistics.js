@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { Bar, Line } from "react-chartjs-2"
 import axios from 'axios'
+import imgH1 from '../images/h1.png'
+import imgH2 from '../images/h2.png'
+import imgH22 from '../images/h22.png'
 
 const  Statistics = () => {
 
@@ -92,6 +95,7 @@ const  Statistics = () => {
                         backgroundColor: '#81BEF7',
                         fill: true,
                         data: arr.map(a=>a.pir_sum)
+
                     }
                 ]
            })
@@ -104,7 +108,7 @@ const  Statistics = () => {
     return (
         <div>
             <div>
-                <h1>고양이집 현황</h1>
+                <h1><img src={imgH1} alt='mypic' id="homebutton" />고양이집 현황 <img src={imgH1} alt='mypic' id="homebutton" /></h1>
                 <p>
                     실시간으로 사료통에 얼만큼 사료가 남았는지, 지금까지 사료를 얼마나 사용하였는지, 고양이가 얼마나 방문했는지 알 수 있어요!
                 </p>
@@ -117,18 +121,18 @@ const  Statistics = () => {
                 
                 
                     <div>
-                        <h2>실시간 전체 사료량</h2>
+                        <h2><img src={imgH2} alt='mypic' id="homebutton" /> 실시간 전체 사료량 <img src={imgH2} alt='mypic' id="homebutton" /></h2>
                         <Line data={weightData} />
                     </div>
 
                     <div>
-                        <h2>누적 사료 배급량</h2>
+                        <h2><img src={imgH22} alt='mypic' id="homebutton" />누적 사료 배급량<img src={imgH22} alt='mypic' id="homebutton" /></h2>
                         <h3>고양이들이 얼만큼 밥을 먹었을까요??</h3>
                         <Bar data={wcountSumData} />
                     </div>
                     
                     <div>
-                        <h2>누적 고양이 방문횟수</h2>
+                        <h2><img src={imgH2} alt='mypic' id="homebutton" />누적 고양이 방문횟수<img src={imgH2} alt='mypic' id="homebutton" /></h2>
                         <h3>고양이들이 얼마나 자주 방문하고 있는지 확인해보세요!!</h3>
                         <Bar data={pirSumData} />
                     </div>

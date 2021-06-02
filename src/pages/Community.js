@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { API, Storage } from 'aws-amplify';
 import { listNotes } from '../graphql/queries';
 import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from '../graphql/mutations';
+import imgH1 from '../images/h1.png'
+import imgH2 from '../images/h2.png'
+import imgH22 from '../images/h22.png'
 
 const initialFormState = { name: '', description: '' }
 
@@ -52,7 +55,7 @@ function Community() {
 
   return (
     <div className="App">
-      <h1>게시판</h1>
+      <h1><img src={imgH1} alt='mypic' id="homebutton" />게시판 <img src={imgH1} alt='mypic' id="homebutton" /></h1>
 
       <input
         onChange={e => setFormData({ ...formData, 'name': e.target.value})}

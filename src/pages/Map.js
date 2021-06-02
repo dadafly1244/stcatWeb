@@ -1,6 +1,9 @@
 /*global kakao*/ 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import imgH1 from '../images/h1.png'
+import imgH2 from '../images/h2.png'
+import imgH22 from '../images/h22.png'
 
 
 
@@ -86,7 +89,7 @@ const Map = () => {
     
   return(
     <div>
-      <h1>고양이집 현재 위치</h1>
+      <h1><img src={imgH1} alt='mypic' id="homebutton" />고양이집 현재 위치<img src={imgH1} alt='mypic' id="homebutton" /></h1>
       <p>GPS로 현재 고양이집이 있는 곳을 지도에서 알 수 있어요.</p>
       <div id="map" style={{width:"500px", height:"400px", margin:"auto"}}></div>
 

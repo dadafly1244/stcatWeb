@@ -3,6 +3,9 @@ import {Doughnut} from "react-chartjs-2"
 import axios from 'axios'
 import catIn from '../images/in.png'
 import catOut from '../images/out.png'
+import imgH1 from '../images/h1.png'
+import imgH2 from '../images/h2.png'
+import imgH22 from '../images/h22.png'
 //I love you dayoung
 const  User = () => {
     const [weightData1, setWeigihtData1] =useState();
@@ -77,7 +80,7 @@ const  User = () => {
            //console.log(last);
 
 
-           if(last.pir_count >1){setStagePir(2)}
+           if(last.pir_count < 1){setStagePir(2)}
            else{setStagePir(1)};
 
            
@@ -113,7 +116,8 @@ const  User = () => {
     return(
         <div>
             <div>
-                <h1>관리</h1>
+                
+                <h1><img src={imgH1} alt='mypic' id="homebutton" />관리 <img src={imgH1} alt='mypic' id="homebutton" /></h1>
                 <p>
                     실시간으로 고양이집의 상태를 알 수 있어요! 
                 </p>
@@ -121,7 +125,7 @@ const  User = () => {
             <section>
 
                 <div>
-                    <h2>고양이는 지금...</h2>
+                    <h2><img src={imgH2} alt='mypic' id="homebutton" />고양이는 지금...<img src={imgH2} alt='mypic' id="homebutton" /></h2>
                     {stagePir ===1 && (
                         <h4> 우와! 고양이가 놀러온거 같아요! <br />
                             <img src={catIn} alt='in' /></h4>
@@ -136,7 +140,7 @@ const  User = () => {
 
                 </div>
                 <div>
-                    <h2>현재 남은 사료량</h2>
+                    <h2><img src={imgH22} alt='mypic' id="homebutton" />현재 남은 사료량<img src={imgH22} alt='mypic' id="homebutton" /></h2>
                     <div>
                         {stage ===1 &&(
                             <h4 style={fontgreen}> 사료가 충분합니다 :)</h4>
