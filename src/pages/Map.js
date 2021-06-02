@@ -87,8 +87,7 @@ const Map = () => {
   return(
     <div>
       <h1>고양이집 현재 위치</h1>
-      <h3></h3>
-
+      <p>GPS로 현재 고양이집이 있는 곳을 알 수 있어요.</p>
       <div id="map" style={{width:"500px", height:"400px", margin:"auto"}}></div>
 
     </div>

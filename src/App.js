@@ -23,11 +23,13 @@ class App extends Component {
             <nav>
               <div id="grid">
                 <div id="row1">
-                  <Link to="/Map"><button class="myButton">Map</button></Link>
-                  <Link to="/Community"><button class="myButton">Community</button></Link>
-                  <Link to="/Statistics"><button class="myButton">Statistics</button></Link>
+                  <Link to="/User"><button class="myButton">관리</button></Link>
+                  <Link to="/Statistics"><button class="myButton">통계</button></Link>
+                  <Link to="/Map"><button class="myButton">위치</button></Link>
+                  <Link to="/Community"><button class="myButton">게시판</button></Link>
+                  
                   <Link to="/Gallery"><button class="myButton">Gallery</button></Link>
-                  <Link to="/User/:name"><button class="myButton">User</button></Link>
+                  
                 </div>
               </div>
             </nav>
@@ -37,7 +39,7 @@ class App extends Component {
             <Route path="/Statistics" component={Statistics}/>
             <Route path="/Map" component={Map}/>
             <Route path='/Gallery/' component={Gallery}/>
-            <Route path='/User/:name' component={User}/>
+            <Route path='/User' component={User}/>
           </div>
         </Router>
       </div> 

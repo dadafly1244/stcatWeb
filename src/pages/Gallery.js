@@ -1,4 +1,4 @@
-import React, { useRef ,useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Bar, Line } from "react-chartjs-2"
 import axios from 'axios'
 
@@ -77,7 +77,7 @@ const Gallery = () => {
                 ]
            });
 
-           const w_count_sumsum = arr.map(a=> a.w_count_sum * 5.5);
+           
 
            setWcountSumData({
             labels,
@@ -86,7 +86,7 @@ const Gallery = () => {
                     label: "누적 사료량",
                     backgroundColor: '#FAAC58',
                     fill: true,
-                    data: arr.map(a=>a.w_count_sumsum)
+                    data: arr.map(a=>a.w_count_sum *5.5)
                 }
             ]
             })
@@ -111,7 +111,7 @@ const Gallery = () => {
     return (
         <div>
             <div>
-                <h1>디바이스 현황</h1>
+                <h1>고양이집 현황</h1>
             </div>
             <section>
                 
@@ -119,9 +119,7 @@ const Gallery = () => {
                 <div className="contents">
                     <div>
                 
-                    
-                    
-
+                
                     <div>
                         <h2>실시간 전체 사료량</h2>
                         <Line data={weightData} />

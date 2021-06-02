@@ -1,7 +1,6 @@
 import React from 'react'
-//import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 import mypic from '../images/home.png'
-//import { Home } from '../pages';
 
 const Header = () => {
     return (
