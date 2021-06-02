@@ -1,7 +1,7 @@
-import React, { useRef ,useState, useEffect} from 'react';
-import { Bar, Doughnut, Line } from "react-chartjs-2"
+import React, {useState, useEffect} from 'react';
+import {Doughnut} from "react-chartjs-2"
 import axios from 'axios'
-import { a } from '@aws-amplify/ui';
+
 
 const Home = () => {
 
@@ -71,7 +71,7 @@ const Home = () => {
           
            
            const last = arr[arr.length -1]
-           console.log(last);
+           //console.log(last);
 
            
             const rest = 30-last.weight_b;
@@ -105,10 +105,8 @@ const Home = () => {
 
     return(
         <div>
-            <h1>Home Page</h1>
             <div>
-
-
+                <h1>Home Page</h1>
             </div>
             <section>
                 <div>

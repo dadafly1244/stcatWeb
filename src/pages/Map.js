@@ -86,7 +86,9 @@ const Map = () => {
     
   return(
     <div>
-      <h2>Map</h2>
+      <h1>고양이집 현재 위치</h1>
+      <h3></h3>
+
       <div id="map" style={{width:"500px", height:"400px", margin:"auto"}}></div>
 
     </div>

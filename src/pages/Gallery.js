@@ -76,6 +76,9 @@ const Gallery = () => {
                     }
                 ]
            });
+
+           const w_count_sumsum = arr.map(a=> a.w_count_sum * 5.5);
+
            setWcountSumData({
             labels,
             datasets:[
@@ -83,7 +86,7 @@ const Gallery = () => {
                     label: "누적 사료량",
                     backgroundColor: '#FAAC58',
                     fill: true,
-                    data: arr.map(a=>a.w_count_sum)
+                    data: arr.map(a=>a.w_count_sumsum)
                 }
             ]
             })
@@ -106,36 +109,41 @@ const Gallery = () => {
     }, [])
 
     return (
-        <section>
-            <h1>디바이스 현황</h1>
-
-            <div className="contents">
-                <div>
-               
-                
-                
-
-                <div>
-                    <h2>실시간 전체 사료량</h2>
-                    <Line data={weightData} />
-                </div>
-
-                <div>
-                    <h2>누적 사료 배급량</h2>
-                    <h3>고양이들이 얼만큼 밥을 먹었을까요??</h3>
-                    <Bar data={wcountSumData} />
-                </div>
-                
-                <div>
-                    <h2>누적 고양이 방문횟수</h2>
-                    <h3>고양이들이 얼마나 자주 방문하고 있는지 확인해보세요!!</h3>
-                    <Bar data={pirSumData} />
-                </div>
-                
-                </div>
+        <div>
+            <div>
+                <h1>디바이스 현황</h1>
             </div>
-            
-        </section>
+            <section>
+                
+
+                <div className="contents">
+                    <div>
+                
+                    
+                    
+
+                    <div>
+                        <h2>실시간 전체 사료량</h2>
+                        <Line data={weightData} />
+                    </div>
+
+                    <div>
+                        <h2>누적 사료 배급량</h2>
+                        <h3>고양이들이 얼만큼 밥을 먹었을까요??</h3>
+                        <Bar data={wcountSumData} />
+                    </div>
+                    
+                    <div>
+                        <h2>누적 고양이 방문횟수</h2>
+                        <h3>고양이들이 얼마나 자주 방문하고 있는지 확인해보세요!!</h3>
+                        <Bar data={pirSumData} />
+                    </div>
+                    
+                    </div>
+                </div>
+                
+            </section>
+        </div>
     )
 }
 

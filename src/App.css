@@ -42,7 +42,7 @@
 
 
 .myButton {
-  width : 200px;
+  width : 100px;
 	background-color:#c78bff;
 	border-radius:28px;
 	border:1px solid #af84f3;
@@ -50,11 +50,11 @@
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:25px;
-	padding:16px 31px;
+	font-size:15px;
+	padding:8px 15px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #9152cc;
-  margin: 5px;
+  margin: 3px;
   
 }
 .myButton:hover {
