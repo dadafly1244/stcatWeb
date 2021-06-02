@@ -13,7 +13,7 @@
 
  #grid {
    display: grid;
-   grid-template-rows: 1fr 1fr 1fr;
+   
    justify-items: center;
  }
 
@@ -75,6 +75,16 @@ a{
 
 #homebutton {
   width:50px;
+  object-fit:scale-down;
+  padding-right:10px;
+}
+
+#buttonbabo{
+  justify-items: center;
+}
+
+#homeimg{
+  width:500px;
   object-fit:scale-down;
   padding-right:10px;
 }

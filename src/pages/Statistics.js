@@ -110,7 +110,7 @@ const  Statistics = () => {
             <div>
                 <h1><img src={imgH1} alt='mypic' id="homebutton" />고양이집 현황 <img src={imgH1} alt='mypic' id="homebutton" /></h1>
                 <p>
-                    실시간으로 사료통에 얼만큼 사료가 남았는지, 지금까지 사료를 얼마나 사용하였는지, 고양이가 얼마나 방문했는지 알 수 있어요!
+                    실시간으로 사료통에 얼만큼 사료가 남았는지,<br /> 지금까지 사료를 얼마나 사용하였는지,<br /> 고양이가 얼마나 방문했는지 알 수 있어요!
                 </p>
             </div>
             <section>
