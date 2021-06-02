@@ -13,12 +13,12 @@ const Home = () => {
     const fontgreen = {
         color : "#B1E26A",
         textAlign: "center",
-        fontSize : 30,
+        fontSize : 20,
     }
     const fontred = {
         color : "#F15E55",
         textAlign: "center",
-        fontSize : 40,
+        fontSize : 30,
     }
 
     useEffect(()=>{
@@ -105,14 +105,14 @@ const Home = () => {
 
     return(
         <div>
-            <h2>Home Page</h2>
+            <h1>Home Page</h1>
             <div>
 
 
             </div>
             <section>
                 <div>
-                    <h3>현재 남은 사료량</h3>
+                    <h2>현재 남은 사료량</h2>
                     <div>
                         {stage ===1 &&(
                             <h4 style={fontgreen}> 사료가 충분합니다 :)</h4>
@@ -122,7 +122,7 @@ const Home = () => {
                         {stage ===2 &&(
                             <h4 style={fontred}> 사료가 부족합니다!! 사료를 채워주세요. :( </h4>
                         )}
-                        <h5 style={fontgreen}>{console.log(currentHours, currentMinutes)} @@마지막 업데이트 시간은 {currentHours}시 {currentMinutes}분 입니다.</h5>,
+                        <h5 style={fontgreen}>마지막 업데이트 시간은 {currentHours}시 {currentMinutes}분 입니다.</h5>
                 
                     </div>
 

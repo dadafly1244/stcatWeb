@@ -1,20 +1,6 @@
 import React, { useRef ,useState, useEffect} from 'react';
-import { Bar, Doughnut, Line } from "react-chartjs-2"
+import { Bar, Line } from "react-chartjs-2"
 import axios from 'axios'
-
-
-
-
-//display:true, beginAtZero : true, steps: 10, stepValue: 5, max:100
-/* const optionss = {
-               
-    plugins:{
-        title:{display:true,text: "전체 사료 잔량", fontSize:20 },
-        legend :{display:true, position:"bottom"},
-        scales :{ y: {suggestedMin:0, suggestedMax:100}}, 
-    }, 
-
-}; */
 
 const Gallery = () => {
 
@@ -22,36 +8,15 @@ const Gallery = () => {
     const [wcountSumData, setWcountSumData] =useState();
     const [pirSumData, setPirSumData] =useState();
     
-    const chartContainer = useRef(null);
-   
+    //const chartContainer = useRef(null);
    
     
     useEffect(()=>{
 
         const fetchEvents = async()=>{
             const res = await axios.get("https://t4zul88hze.execute-api.ap-northeast-2.amazonaws.com/devices/10" )//이 줄이 완료된후 다음줄 실행
-
-            console.log(res)
+            //console.log(res)
             makeData(res.data.Items)
-
-            //var ctx = document.getElementById('myChart');
-
-            /* var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    weightData
-                },
-                options: {
-                    scales: {
-                        y: {
-                            suggestedMin: 0,
-                            suggestedMax: 100
-                        }
-                    }
-                }
-            }); */
-           
-
 
         }
         
@@ -70,8 +35,6 @@ const Gallery = () => {
                 const pir_count = device_data.pir_count; //0아니면 반응한 것
                 const pir_sum = device_data.pir_sum;
                 const w_count_sum = device_data.w_count_sum;
-
-
 
                 const findItem = acc.find(a=> a.year === year && a.month === month && a.date === date && a.hours === hours && a.minutes === minutes);
                 if(!findItem) {
@@ -100,14 +63,14 @@ const Gallery = () => {
            const labels = arr.map(a=> `${a.date}일 ${a.hours}시 ${a.minutes}분`);//재정의할때 씀
            
            const last = arr[arr.length -1]
-           console.log(last);
+           //console.log(last);
 
            setWeigihtData({
                 labels,
                 datasets:[
                     {
                         label: "전체 사료 잔량",
-                        backgroundColor: "salmon",
+                        borderColor: "salmon",
                         fill: false,
                         data: arr.map(a=>a.weight_b)
                     }
@@ -118,7 +81,7 @@ const Gallery = () => {
             datasets:[
                 {
                     label: "누적 사료량",
-                    backgroundColor: "yellow",
+                    backgroundColor: '#FAAC58',
                     fill: true,
                     data: arr.map(a=>a.w_count_sum)
                 }
@@ -130,47 +93,45 @@ const Gallery = () => {
                 datasets:[
                     {
                         label: "누적 방문 횟수",
-                        backgroundColor: "blue",
+                        backgroundColor: '#81BEF7',
                         fill: true,
                         data: arr.map(a=>a.pir_sum)
                     }
                 ]
            })
-           
-
-          
-            
-            // items.forEach(item => console.log(item))
-            console.log(arr)
+            //console.log(arr)
         }
 
-
         fetchEvents()
-    }, [chartContainer])
+    }, [])
 
     return (
         <section>
-            <h2>디바이스 현황</h2>
+            <h1>디바이스 현황</h1>
 
             <div className="contents">
                 <div>
                
                 
-                <h3>실험3</h3>
+                
 
                 <div>
+                    <h2>실시간 전체 사료량</h2>
                     <Line data={weightData} />
                 </div>
 
-                <Bar
-                    data={wcountSumData}
-                   
-                />
+                <div>
+                    <h2>누적 사료 배급량</h2>
+                    <h3>고양이들이 얼만큼 밥을 먹었을까요??</h3>
+                    <Bar data={wcountSumData} />
+                </div>
                 
-                <Bar
-                    data={pirSumData}
-                   
-                />
+                <div>
+                    <h2>누적 고양이 방문횟수</h2>
+                    <h3>고양이들이 얼마나 자주 방문하고 있는지 확인해보세요!!</h3>
+                    <Bar data={pirSumData} />
+                </div>
+                
                 </div>
             </div>
             

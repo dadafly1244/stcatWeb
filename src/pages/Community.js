@@ -52,7 +52,7 @@ function Community() {
 
   return (
     <div className="App">
-      <h1>My Notes App</h1>
+      <h1>게시판</h1>
 
       <input
         onChange={e => setFormData({ ...formData, 'name': e.target.value})}
@@ -69,7 +69,7 @@ function Community() {
         onChange={onChange}
       />
       <button onClick={createNote}>Create Note</button>
-      <div style={{marginBottom: 30}}>
+      <div style={{marginBottom: 30, textAlign: 'center'}}>
         {
           notes.map(note => (
             <div key={note.id || note.name}>
