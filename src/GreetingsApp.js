@@ -20,7 +20,7 @@ const GreetingsApp = () => {
 
   return authState === AuthState.SignedIn && user ? (
     <div className="App">
-      <AmplifyGreetings username={user.attributes.email} ></AmplifyGreetings>
+      <AmplifyGreetings username={user.username} ></AmplifyGreetings>
     </div>
   ) : (
     <AmplifyAuthenticator />
