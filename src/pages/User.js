@@ -77,7 +77,7 @@ const  User = () => {
            //console.log(last);
 
 
-           if(last.pir_count === 1){setStagePir(2)}
+           if(last.pir_count >1){setStagePir(2)}
            else{setStagePir(1)};
 
            
