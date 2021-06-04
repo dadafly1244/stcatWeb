@@ -11,10 +11,12 @@ import homeImg from '../images/homeimg.png'
 const Home = () => {
 
     
-   
+   const imgcss={
+    alignitems: "center",
+   }
 
     return(
-        <div>
+        <div >
             <img src={homeImg} alt='mypic' id="homeimg" />
 
         </div>
