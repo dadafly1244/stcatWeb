@@ -51,10 +51,12 @@ const  User = () => {
                 const weight_b = device_data.weight_b;//실시간 사료통 무게
                 const w_count = device_data.w_count;//0 아니면 서보모터 돌아감 
                 const pir_count = device_data.pir_count; //0아니면 반응한 것
+                const pir_sum = device_data.pir_sum;
+                const w_count_sum = device_data.w_count_sum;
 
-                const findItem = acc.find(a=> a.year === year && a.month === month);
+                const findItem = acc.find(a=> a.year === year && a.month === month && a.date === date && a.hours === hours && a.minutes === minutes);
                 if(!findItem) {
-                    acc.push({year, month, date, hours, minutes, id, device_data,weight_b,w_count ,pir_count})
+                    acc.push({year, month, date, hours, minutes, id, device_data,weight_b,w_count,pir_count,pir_sum,w_count_sum })
                 } 
                 if(findItem && findItem.minutes <minutes){ 
                     
@@ -67,7 +69,9 @@ const  User = () => {
                     findItem.device_data = device_data;
                     findItem.weight_b = weight_b;
                     findItem.w_count = w_count;
-                    findItem.pir_count =pir_count;
+                    findItem.pir_count = pir_count;
+                    findItem.pir_sum =pir_sum;
+                    findItem.w_count_sum =w_count_sum;
                 }
             
                return acc;
@@ -77,7 +81,7 @@ const  User = () => {
           
            
            const last = arr[arr.length -1]
-           //console.log(last);
+           console.log(last);
 
 
            if(last.pir_count < 1){setStagePir(2)}
