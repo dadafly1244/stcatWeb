@@ -34,7 +34,8 @@ const Map = () => {
       marker.setMap(map);
 
     }
-      
+    
+   
     const makeData = (items) => {
       const arr = items.reduce((acc,cur)=>{ //그 달의 가장 나중 날짜에 해당하는 것만 가져올거임, 필터링
         const currentDate = new Date(cur.time);
@@ -45,31 +46,39 @@ const Map = () => {
         const minutes = currentDate.getMinutes();
         const id = cur.id;
         const device_data = cur.device_data;
+        const weight_b = device_data.weight_b;//실시간 사료통 무게
+        const w_count = device_data.w_count;//0 아니면 서보모터 돌아감 
+        const pir_count = device_data.pir_count; //0아니면 반응한 것
+        const pir_sum = device_data.pir_sum;
+        const w_count_sum = device_data.w_count_sum;
         const lat = device_data.lat;
         const lon = device_data.lon;
 
-
-        const findItem = acc.find(a=> a.year === year && a.month === month);
+        const findItem = acc.find(a=> a.year === year && a.month === month && a.date === date && a.hours === hours && a.minutes === minutes);
         if(!findItem) {
-          acc.push({year, month, date, hours, minutes, id, device_data, lat, lon})
+            acc.push({year, month, date, hours, minutes, id, device_data,weight_b,w_count,pir_count,pir_sum,w_count_sum,lat,lon })
         } 
         if(findItem && findItem.minutes <minutes){ 
-                
-          findItem.date = date;
-          findItem.year = year;
-          findItem.month = month;
-          findItem.hours = hours;
-          findItem.minutes = minutes;
-          findItem.id = id;
-          findItem.device_data = device_data;
-          findItem.lat = lat;
-          findItem.lon = lon;
-          
+            
+            findItem.date = date;
+            findItem.year = year;
+            findItem.month = month;
+            findItem.hours = hours;
+            findItem.minutes = minutes;
+            findItem.id = id;
+            findItem.device_data = device_data;
+            findItem.weight_b = weight_b;
+            findItem.w_count = w_count;
+            findItem.pir_count = pir_count;
+            findItem.pir_sum =pir_sum;
+            findItem.w_count_sum =w_count_sum;
+            findItem.lat = lat;
+            findItem.lon = lon; 
         }
-        
-        return acc;
+    
+       return acc;
 
-      }, [])
+   }, [])
 
       const last = arr[arr.length -1]
       latData = last.lat *0.01;
